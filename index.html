@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html>
+<!--
+ _    _          _____   _____ _    _ _____ _______   __      __
+| |  | |   /\   |  __ \ / ____| |  | |_   _|__   __|  \ \    / /
+| |__| |  /  \  | |__) | (___ | |__| | | |    | |      \ \  / /
+|  __  | / /\ \ |  _  / \___ \|  __  | | |    | |       \ \/ /
+| |  | |/ ____ \| | \ \ ____) | |  | |_| |_   | |        \  /
+|_|  |_/_/    \_\_|  \_\_____/|_|  |_|_____|  |_|         \(_)
+
+-->
   <head>
     <title>Summernote Estension</title>
     <meta name="description" content="A demo for summernote and all it's capabilities.">
@@ -23,6 +32,17 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"></script>
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"></script>
+    <style>
+      #show-html-output-container {
+        background-color: #eee;
+        color: #000;
+        border: 1px solid #ddd;
+        min-height: 200px;
+        border-radius: 5px;
+        padding: 5px;
+        overflow: auto;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -33,14 +53,101 @@
           <div class="row content">
 
             <div class="col-md-12 col-sm-12 col-xs-12">
-              <h1>Summernote Extension</h1>
+              <h1><a href="https://github.com/harshitvsaxena/SummernoteExtension" target="_blank">SummernoteExtension</a></h1>
               <hr>
             </div>
 
             <div class="col-md-12 col-sm-12 col-xs-12">
               <!--Container for summernote editor -->
+              <h2>Basic Summernote</h2>
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <div id="summernote-1"><p>Hello Summernote</p></div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <p><code>Requires HTML5 doctype</code> - Bootstrap uses certain HTML elements and CSS properties which require HTML5 doctype. Include &lt;!DOCTYPE html&gt; in the beginning of all your projects.</p>
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+...
+&lt;/html&gt;
+</pre>
+                  <p>Add this in your <code>head</code> element of the web page.</p>
+<pre>
+&lt;!-- Include libraries (jQuery, bootstrap) --&gt;
+&lt;link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet"&gt;
+&lt;script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js"&gt;&lt;/script&gt;
+&lt;script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"&gt;&lt;/script&gt;
+
+&lt;!-- Include summernote css/js --&gt;
+&lt;link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.css" rel="stylesheet"&gt;
+&lt;script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.1/summernote.js"&gt;&lt;/script&gt;
+</pre>
+                  <p>Initializing <code>Summernote</code></p>
+<pre>
+&lt;div id="summernote"&gt;&lt;/div&gt;
+</pre>
+<pre>
+&lt;script type="text/javascript"&gt;
+  $(document).ready(function() {
+    $('#summernote').summernote();
+  });
+&lt;/script&gt;
+</pre>
+                </div>
+              </div>
               <hr>
             </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <h2>Getting HTML output</h2>
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <div id="summernote-2"><p>Write somethingh here and press the output button at bottom.</p></div>
+                  <input type="button" class="btn btn-primary" id="show-html-output-btn" value="HTML Output" />
+                  <hr>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <p><code>Intializing</code></p>
+<pre>
+$('#summernote').summernote({
+  height: 250,                 // set editor height
+  minHeight: null,             // set minimum height of editor
+  maxHeight: null,             // set maximum height of editor
+});
+</pre>
+                  <p>Getting output as <code>HTML</code>:</p>
+<pre>
+var markupStr = $('#summernote').summernote('code');
+alert(markupStr);
+</pre>
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <hr>
+                  <h3>Output: </h3>
+                  <div id="show-html-output-container">
+                    <p>Press the <b>Show HTML Output</b> button above to see the output.</p>
+                  </div>
+                </div>
+              </div>
+              <hr>
+            </div>
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <h2>Uploading Images</h2>
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                  <div id="summernote-3"><p>Select an image by clicking the picture icon above.</p></div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                </div>
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                  <h3>Some Output</h3>
+                </div>
+              </div>
+              <hr>
+            </div>
+
 
           </div>
 
@@ -48,5 +155,33 @@
         <div class="col-md-1 col-sm-1 col-xs-0"></div><!-- Empty Space -->
       </div>
     </div>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        //Initializing all the summernote instances
+        $('#summernote-1').summernote();
+        $('#summernote-2').summernote({
+          height: 250,                 // set editor height
+          minHeight: null,             // set minimum height of editor
+          maxHeight: null,             // set maximum height of editor
+        });
+        $('#summernote-3').summernote({
+          height: 250,                 // set editor height
+          minHeight: null,             // set minimum height of editor
+          maxHeight: null,             // set maximum height of editor
+        });
+
+        //Showing html output
+        $("#show-html-output-btn").click(function() {
+          var markupStr = $('#summernote-2').summernote('code');
+          //Replacing all the greater than signs and less than signs with &gt; &lt; respectively
+          // />/g and /</g are used to replace all the respective signs.
+          var newStr = markupStr.replace(/>/g , "&gt;");
+          newStr = newStr.replace(/</g , "&lt;");
+          $("#show-html-output-container").empty();
+          $("#show-html-output-container").append(newStr);
+        });
+
+      });
+    </script>
   </body>
 </html>
